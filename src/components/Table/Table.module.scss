@@ -1,0 +1,115 @@
+.table_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  table {
+    width: 100%;
+    max-width: 1200px;
+    display: grid;
+    overflow: auto;
+    //grid-template-columns: repeat(5, minmax(50px, 1fr));
+    grid-template-columns:
+      minmax(50px, 2fr)
+      minmax(50px, 1fr)
+      minmax(50px, 1fr)
+      minmax(50px, 2fr)
+      minmax(50px, 3fr);
+    border: 1px solid #ced2da;
+    border-radius: 16px;
+  }
+
+  table th,
+  table td {
+    padding: 10px;
+  }
+
+  table td span {
+    cursor: pointer;
+  }
+
+  table tr:hover td {
+    background-color: #f3f4f6;
+  }
+
+  table thead,
+  table tbody,
+  table tr {
+    display: contents;
+  }
+
+  table tr td {
+    border-top: 1px solid #ced2da;
+  }
+
+  table th {
+    position: relative;
+    background-color: #1975ff;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+  }
+
+  table th svg {
+    align-self: center;
+  }
+
+  table th svg:hover {
+    align-self: center;
+    cursor: pointer;
+    background-color: #135ac4;
+  }
+
+  table th span,
+  table td span {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: block;
+  }
+}
+
+.resizeHandle {
+  display: block;
+  position: absolute;
+  cursor: col-resize;
+  width: 7px;
+  right: 0;
+  top: 0;
+  z-index: 1;
+  border-right: 1px solid #ced2da;
+
+  &:hover {
+    border-color: #ccc;
+  }
+
+  &.active {
+    border-color: #86898e;
+  }
+}
+
+thead tr th:last-child .resizeHandle {
+  display: none;
+}
+
+.table_loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #1975ff;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
